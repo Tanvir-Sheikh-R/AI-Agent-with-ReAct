@@ -1,0 +1,6 @@
+langchain
+langgraph
+litellm
+tavily
+pandas
+numpy
