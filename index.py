@@ -1,15 +1,3 @@
-"""
-AI Agent with Tool Use — Streamlit App
----------------------------------------
-Tools:
-  - read_file / write_file   -> sandboxed workspace directory
-  - execute_python_code      -> isolated subprocess, timeout-guarded
-  - save_memory / recall_memory -> persistent long-term memory (Chroma), survives across sessions
-
-UI: chat on the left, a streamlit-ace code editor on the right that shows
-whatever code the agent writes and lets you re-run it manually.
-"""
-
 import os
 import re
 import subprocess
@@ -195,11 +183,11 @@ chat_col, editor_col = st.columns([1, 1])
 with chat_col:
     st.subheader("Chat")
 
-    uploaded = st.file_uploader("Give the agent a file", key="uploader")
-    if uploaded is not None:
-        dest = WORKSPACE_DIR / uploaded.name
-        dest.write_bytes(uploaded.getvalue())
-        st.caption(f"Saved to workspace as '{uploaded.name}' — ask the agent to read_file it.")
+    # uploaded = st.file_uploader("Give the agent a file", key="uploader")
+    # if uploaded is not None:
+    #     dest = WORKSPACE_DIR / uploaded.name
+    #     dest.write_bytes(uploaded.getvalue())
+    #     st.caption(f"Saved to workspace as '{uploaded.name}' — ask the agent to read_file it.")
 
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
